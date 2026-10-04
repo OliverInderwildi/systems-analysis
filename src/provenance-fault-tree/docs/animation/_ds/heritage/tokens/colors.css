@@ -1,0 +1,83 @@
+/* Colors — Heritage palette.
+   Base palette (from the supplied swatches) + semantic aliases.
+   Always prefer the semantic aliases in components; reach for a raw
+   swatch only when nothing semantic fits. */
+
+:root {
+  /* ---- Base palette (verbatim from the supplied swatches) ---- */
+  --oxford-blue: #002147;      /* deep authoritative primary */
+  --racing-green: #0B341C;     /* British Racing Green */
+  --steel-navy: #1F2E51;       /* Steel / Navy */
+  --sky-blue: #70B3FF;         /* Sky Blue accent */
+  --light-blue: #D6E9FF;       /* Light Blue tint */
+  --orange: #FF9A2B;           /* Orange */
+  --dark-red: #980605;         /* Dark Red */
+  --alarm-red: #FF4C4C;        /* Alarm Red */
+  --leather-brown: #A57C5B;    /* Leather Brown */
+  --antique-gold: #C49A6C;     /* Warm Antique Gold */
+  --muted-purple: #5A2C72;     /* Muted Purple */
+  --grey-dark: #505050;        /* Grey Dark */
+  --grey-medium: #A0A0A0;      /* Grey Medium */
+  --grey-light: #E0E0E0;       /* Grey Light */
+
+  --white: #FFFFFF;
+  --ink: #14181C;              /* near-black, derived for body text on light */
+
+  /* ---- Brand ---- */
+  --brand-primary: var(--oxford-blue);
+  --brand-secondary: var(--racing-green);
+  --brand-accent: var(--orange);
+  --brand-gold: var(--antique-gold);
+  --brand-leather: var(--leather-brown);
+
+  /* ---- Text ---- */
+  --text-strong: var(--oxford-blue);
+  --text-body: #232830;
+  --text-muted: var(--grey-dark);
+  --text-subtle: #8A8A8A;
+  --text-inverse: #FFFFFF;
+  --text-on-accent: #2A1600;   /* dark ink for text on orange/gold */
+  --text-link: var(--steel-navy);
+  --text-link-hover: var(--oxford-blue);
+
+  /* ---- Surfaces ---- */
+  --surface-page: #FAFAF8;
+  --surface-card: #FFFFFF;
+  --surface-sunken: #F2F3F1;
+  --surface-raised: #FFFFFF;
+  --surface-tint: var(--light-blue);
+  --surface-tint-warm: #F6EFE6;   /* leather/gold tint */
+  --surface-inverse: var(--oxford-blue);
+  --surface-inverse-alt: var(--racing-green);
+
+  /* ---- Borders ---- */
+  --border-subtle: #ECEDEA;
+  --border-default: #DADBD7;
+  --border-strong: #BFC0BC;
+  --border-inverse: rgba(255, 255, 255, 0.16);
+  --border-focus: var(--sky-blue);
+
+  /* ---- Semantic states ---- */
+  --success: var(--racing-green);
+  --success-bg: #E7F0E9;
+  --success-border: #B9D3C1;
+
+  --warning: #C56A00;          /* orange darkened for AA text */
+  --warning-accent: var(--orange);
+  --warning-bg: #FFF1DD;
+  --warning-border: #F5D19A;
+
+  --danger: var(--alarm-red);
+  --danger-strong: var(--dark-red);
+  --danger-bg: #FDE9E9;
+  --danger-border: #F5C2C2;
+
+  --info: var(--steel-navy);
+  --info-accent: var(--sky-blue);
+  --info-bg: var(--light-blue);
+  --info-border: #B5D4F5;
+
+  /* ---- Focus ring ---- */
+  --ring: 0 0 0 3px rgba(112, 179, 255, 0.45);
+  --ring-inverse: 0 0 0 3px rgba(112, 179, 255, 0.55);
+}

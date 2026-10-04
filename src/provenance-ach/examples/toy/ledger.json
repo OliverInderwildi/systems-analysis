@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "corpus": "none - illustrative",
+    "date": "2026-09-23"
+  },
+  "claims": [
+    {
+      "id": "C-001",
+      "claim": "Cooling plant retrofit completed in March",
+      "claim_type": "interpretive",
+      "excerpt": "Works order 4471 records completion of the chiller retrofit on 14 March.",
+      "provenance": {
+        "origin": "site works order log (FICTIONAL, illustrative)",
+        "generation_method": "measured",
+        "classification": "benign",
+        "independent_origins": 2
+      },
+      "evidence_class": "demonstrated",
+      "status": "open"
+    },
+    {
+      "id": "C-002",
+      "claim": "Rack-level power draw unchanged over the year",
+      "claim_type": "interpretive",
+      "excerpt": "DCIM export shows mean rack draw of 5.1 kW in both years.",
+      "provenance": {
+        "origin": "DCIM export (FICTIONAL, illustrative)",
+        "generation_method": "measured",
+        "classification": "replication",
+        "independent_origins": 2
+      },
+      "evidence_class": "established",
+      "status": "open"
+    },
+    {
+      "id": "C-003",
+      "claim": "Sister site reports a 9% increase in load",
+      "claim_type": "interpretive",
+      "excerpt": "Monthly report: 'load at the northern site rose 9% over the period'.",
+      "provenance": {
+        "origin": "sister site monthly report (FICTIONAL, illustrative)",
+        "generation_method": "measured",
+        "classification": "benign",
+        "independent_origins": 1
+      },
+      "evidence_class": "demonstrated",
+      "status": "open"
+    },
+    {
+      "id": "C-004",
+      "claim": "Meter firmware was updated in February",
+      "claim_type": "interpretive",
+      "excerpt": "No source located; inferred from the timing of the step change.",
+      "provenance": {
+        "origin": "proposed by the model from the data pattern",
+        "generation_method": "argued",
+        "classification": "unresolved",
+        "independent_origins": 0
+      },
+      "evidence_class": "asserted",
+      "status": "open"
+    },
+    {
+      "id": "C-005",
+      "claim": "Site remains operational throughout",
+      "claim_type": "interpretive",
+      "excerpt": "Availability dashboard shows no outage exceeding 5 minutes.",
+      "provenance": {
+        "origin": "availability dashboard (FICTIONAL, illustrative)",
+        "generation_method": "measured",
+        "classification": "benign",
+        "independent_origins": 2
+      },
+      "evidence_class": "established",
+      "status": "open"
+    }
+  ]
+}

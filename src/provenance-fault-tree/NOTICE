@@ -1,0 +1,14 @@
+ProvenanceFaultTree
+Copyright 2026 Oliver Inderwildi
+
+This product includes an independent re-implementation of fault tree analysis
+procedures published by the U.S. Nuclear Regulatory Commission in the Fault Tree
+Handbook (NUREG-0492, 1981) by W. E. Vesely, F. F. Goldberg, N. H. Roberts and
+D. F. Haasl, a public-domain U.S. federal work.
+
+This product can write models in the Open-PSA Model Exchange Format for analysis
+by SCRAM (https://github.com/rakhimov/scram, GPL-3.0, (c) Olzhas Rakhimov and
+contributors). SCRAM is neither bundled nor linked; it is invoked, if installed,
+as a separate program.
+
+See ATTRIBUTION.md for the full credit statement.

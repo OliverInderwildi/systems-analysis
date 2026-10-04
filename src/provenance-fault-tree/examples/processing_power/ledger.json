@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "corpus": "none - illustrative",
+    "date": "2026-09-29"
+  },
+  "claims": [
+    {
+      "id": "C-001",
+      "claim": "Probability of a grid supply outage at the site during the period is 0.02",
+      "claim_type": "quantitative",
+      "excerpt": "Site outage log records 2 supply interruptions in 100 site-periods.",
+      "provenance": {
+        "origin": "site outage log 2023-2025 (FICTIONAL source, illustrative)",
+        "generation_method": "measured",
+        "classification": "replication",
+        "independent_origins": 2
+      },
+      "evidence_class": "demonstrated",
+      "status": "open"
+    },
+    {
+      "id": "C-002",
+      "claim": "Probability of an estate-wide rack or CPU hardware fault is 0.0003",
+      "claim_type": "quantitative",
+      "excerpt": "No source consulted; value chosen by the analyst to complete the model.",
+      "provenance": {
+        "origin": "analyst's own assumption (this example)",
+        "generation_method": "asserted",
+        "classification": "unresolved",
+        "independent_origins": 0
+      },
+      "evidence_class": "asserted",
+      "status": "open"
+    }
+  ]
+}

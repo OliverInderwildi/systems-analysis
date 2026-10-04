@@ -1,0 +1,48 @@
+# Zenodo: the DOI of the systems-analysis collection goes here as  doi: 10.5281/zenodo.NNNNNNN
+cff-version: 1.2.0
+title: "ProvenanceEventTree: event tree analysis with an evidence ledger"
+message: "Please cite the method as well as this tool."
+type: software
+version: 0.1.0
+authors:
+  - family-names: Inderwildi
+    given-names: Oliver
+license: MIT
+repository-code: "https://github.com/oliverinderwildi/systems-analysis/tree/main/src/provenance-event-tree"
+abstract: >-
+  An implementation of event tree analysis in which the initiating frequency and every barrier
+  probability must arrive with a provenance record, each accident sequence inherits the weakest
+  evidence class among the barriers that failed on it, and the authorship of every element -
+  source, analyst or language model - is recorded and reported.
+keywords:
+  - event tree analysis
+  - reliability
+  - risk analysis
+  - evidence ledger
+  - provenance
+  - systems analysis
+references:
+  - type: report
+    title: "Reactor Safety Study: An Assessment of Accident Risks in U.S. Commercial Nuclear Power Plants"
+    authors:
+      - family-names: Rasmussen
+        given-names: "Norman C."
+    institution:
+      name: "U.S. Nuclear Regulatory Commission"
+    number: "WASH-1400 (NUREG-75/014)"
+    year: 1975
+  - type: report
+    title: "Fault Tree Handbook"
+    authors:
+      - family-names: Vesely
+        given-names: "W. E."
+      - family-names: Goldberg
+        given-names: "F. F."
+      - family-names: Roberts
+        given-names: "N. H."
+      - family-names: Haasl
+        given-names: "D. F."
+    institution:
+      name: "U.S. Nuclear Regulatory Commission"
+    number: "NUREG-0492"
+    year: 1981

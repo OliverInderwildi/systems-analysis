@@ -1,0 +1,21 @@
+# Zenodo: after the first GitHub release, add the concept DOI here as  doi: 10.5281/zenodo.NNNNNNN
+cff-version: 1.2.0
+title: "Systems analysis: open tools with an evidence ledger"
+message: "If you use this software, please cite it, and the method of the tool you used (see src/<tool>/CITATION.cff)."
+type: software
+version: 0.1.0
+authors:
+  - family-names: Inderwildi
+    given-names: Oliver
+license: MIT
+repository-code: "https://github.com/oliverinderwildi/systems-analysis"
+url: "https://oliverinderwildi.github.io/code/"
+abstract: >-
+  A collection of open tools for systems analysis - fault tree analysis, event tree analysis, and analysis of competing hypotheses - each a faithful implementation of a published method with credit to its authors, plus a shared kernel that records where every input came from.
+keywords:
+  - systems analysis
+  - fault tree analysis
+  - event tree analysis
+  - analysis of competing hypotheses
+  - provenance
+  - evidence ledger

@@ -1,0 +1,16 @@
+/* Fonts — SUBSTITUTION.
+   The brief specified Helvetica Neue (Medium for headings/boxes, Light for
+   text), but no font binaries were supplied and Helvetica Neue is licensed.
+   At the user's request we substitute Public Sans — a free, open-source
+   neo-grotesque very close to Helvetica in proportion and rhythm, with the
+   Light (300) and Medium (500) weights the brand relies on.
+   To switch back to the real webfont: drop the Helvetica Neue .woff2 files in
+   assets/fonts/, add @font-face rules here, and point the tokens below at it. */
+
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,700&display=swap');
+
+:root {
+  --font-heading: "Public Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "Public Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+}

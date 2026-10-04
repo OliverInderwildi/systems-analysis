@@ -1,0 +1,92 @@
+{
+  "hypotheses_least_inconsistent_first": [
+    {
+      "hypothesis": "H2",
+      "text": "Workload was moved to another site",
+      "weighted_inconsistency": 0.0,
+      "authored_by": "analyst"
+    },
+    {
+      "hypothesis": "H3",
+      "text": "A metering change altered what is recorded",
+      "weighted_inconsistency": 0.0,
+      "authored_by": "model"
+    },
+    {
+      "hypothesis": "H1",
+      "text": "Efficiency upgrades reduced actual consumption",
+      "weighted_inconsistency": 2.8,
+      "authored_by": "analyst"
+    }
+  ],
+  "evidence_by_diagnosticity": [
+    {
+      "evidence": "E2",
+      "text": "Rack-level power draw unchanged over the year",
+      "diagnosticity": 1.5,
+      "weight": 1.0,
+      "evidence_class": "established",
+      "origin": "DCIM export (FICTIONAL, illustrative)",
+      "authored_by": "source"
+    },
+    {
+      "evidence": "E3",
+      "text": "Sister site reports a 9% increase in load",
+      "diagnosticity": 0.8,
+      "weight": 0.8,
+      "evidence_class": "demonstrated",
+      "origin": "sister site monthly report (FICTIONAL, illustrative)",
+      "authored_by": "source"
+    },
+    {
+      "evidence": "E1",
+      "text": "Cooling plant retrofit completed in March",
+      "diagnosticity": 0.0,
+      "weight": 0.8,
+      "evidence_class": "demonstrated",
+      "origin": "site works order log (FICTIONAL, illustrative)",
+      "authored_by": "source"
+    },
+    {
+      "evidence": "E4",
+      "text": "Meter firmware updated in February",
+      "diagnosticity": 0.0,
+      "weight": 0.25,
+      "evidence_class": "asserted",
+      "origin": "proposed by the model from the data pattern",
+      "authored_by": "model"
+    },
+    {
+      "evidence": "E5",
+      "text": "Site remains operational throughout",
+      "diagnosticity": 0.0,
+      "weight": 1.0,
+      "evidence_class": "established",
+      "origin": "availability dashboard (FICTIONAL, illustrative)",
+      "authored_by": "source"
+    }
+  ],
+  "conclusion_evidence_class": "demonstrated",
+  "authorship": {
+    "analyst": 2,
+    "model": 2,
+    "source": 4
+  },
+  "absence_census": [
+    {
+      "item": "E3",
+      "ledger_ref": "C-003",
+      "missing": "single origin (no independent confirmation)"
+    },
+    {
+      "item": "E4",
+      "ledger_ref": "C-004",
+      "missing": "single origin (no independent confirmation)"
+    }
+  ],
+  "warnings": [
+    "H2 and H3 are equally hard to reject; the matrix does not separate them",
+    "3 item(s) of evidence do no work (E1, E4, E5): consistent with every hypothesis",
+    "2 element(s) of this matrix were proposed by a language model, not found in a source"
+  ]
+}

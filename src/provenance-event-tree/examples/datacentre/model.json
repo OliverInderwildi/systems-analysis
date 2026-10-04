@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "title": "Grid supply outage at a data centre - what follows",
+    "note": "ILLUSTRATIVE. The forward view of the same system the fault tree analyses backwards. Barrier probabilities and the initiating frequency are the same numbers, from the same ledger rows. Sources are fictional and marked as such."
+  },
+  "initiator": {
+    "id": "IE_GRID",
+    "name": "Grid supply outage at site",
+    "short": "Grid outage",
+    "frequency": 0.02,
+    "ledger_ref": "C-001",
+    "authored_by": "analyst"
+  },
+  "barriers": [
+    {
+      "id": "B_UPS",
+      "name": "UPS bridges the gap",
+      "short": "UPS bridges",
+      "failure_probability": 0.004,
+      "ledger_ref": "C-006",
+      "authored_by": "analyst"
+    },
+    {
+      "id": "B_GEN",
+      "name": "Standby generator starts and takes over",
+      "short": "Generator starts",
+      "failure_probability": 0.01,
+      "ledger_ref": "C-002",
+      "authored_by": "analyst"
+    },
+    {
+      "id": "B_FUEL",
+      "name": "Fuel supply sustains the run",
+      "short": "Fuel holds",
+      "failure_probability": 0.005,
+      "ledger_ref": "C-003",
+      "authored_by": "model"
+    }
+  ],
+  "outcomes": {
+    "SSS": "Load maintained",
+    "SSF": "Load lost when fuel runs out",
+    "SFS": "Load lost when the battery depletes",
+    "SFF": "Load lost when the battery depletes",
+    "FSS": "Momentary interruption",
+    "FSF": "Load lost when fuel runs out",
+    "FFS": "Immediate loss of processing power",
+    "FFF": "Immediate loss of processing power"
+  },
+  "severity": {
+    "Immediate loss of processing power": 3,
+    "Load lost when the battery depletes": 2,
+    "Load lost when fuel runs out": 1,
+    "Momentary interruption": 1,
+    "Load maintained": 0
+  }
+}

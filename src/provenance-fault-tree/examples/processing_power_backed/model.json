@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "title": "Loss of processing power, after adding a backup supply",
+    "note": "ILLUSTRATIVE. The same system with standby generation, a fuel reserve and a UPS added. The UPS feeds the racks through the same hardware, so the hardware fault appears twice in the tree - a repeated event, which is what makes one row non-minimal. Sources in the ledger are fictional and marked as such."
+  },
+  "top": "TOP",
+  "gates": {
+    "TOP": {
+      "name": "Loss of processing power",
+      "short": "Loss of processing power",
+      "type": "OR",
+      "inputs": [
+        "G_SUPPLY",
+        "E_HW"
+      ],
+      "authored_by": "analyst"
+    },
+    "G_SUPPLY": {
+      "name": "Loss of electrical supply to the racks",
+      "short": "Supply to racks lost",
+      "type": "AND",
+      "inputs": [
+        "E_GRID",
+        "G_BACKUP"
+      ],
+      "authored_by": "analyst"
+    },
+    "G_BACKUP": {
+      "name": "Backup power unavailable",
+      "short": "Backup power unavailable",
+      "type": "OR",
+      "inputs": [
+        "E_GEN",
+        "E_FUEL",
+        "G_UPS"
+      ],
+      "authored_by": "analyst"
+    },
+    "G_UPS": {
+      "name": "UPS fails to bridge",
+      "short": "UPS fails to bridge",
+      "type": "OR",
+      "inputs": [
+        "E_BATT",
+        "E_HW"
+      ],
+      "authored_by": "analyst"
+    }
+  },
+  "events": {
+    "E_GRID": {
+      "name": "Grid supply outage at site",
+      "probability": 0.02,
+      "ledger_ref": "C-001",
+      "authored_by": "analyst",
+      "short": "Grid outage"
+    },
+    "E_GEN": {
+      "name": "Standby generator fails to start on demand",
+      "probability": 0.01,
+      "ledger_ref": "C-002",
+      "authored_by": "analyst",
+      "short": "Generator fails to start"
+    },
+    "E_FUEL": {
+      "name": "Fuel supply to generator unavailable",
+      "probability": 0.005,
+      "ledger_ref": "C-003",
+      "authored_by": "model",
+      "short": "Fuel supply fails"
+    },
+    "E_HW": {
+      "name": "Rack or CPU hardware fault taking the estate down",
+      "short": "Hardware fault",
+      "probability": 0.0003,
+      "ledger_ref": "C-005",
+      "authored_by": "analyst"
+    },
+    "E_BATT": {
+      "name": "UPS battery fails",
+      "short": "UPS battery fails",
+      "probability": 0.004,
+      "ledger_ref": "C-006",
+      "authored_by": "analyst"
+    }
+  }
+}

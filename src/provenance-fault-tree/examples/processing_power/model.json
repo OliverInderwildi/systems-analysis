@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "title": "Loss of processing power at a data centre (as built, no backup)",
+    "note": "ILLUSTRATIVE. The system as it stands: grid supply feeds the data centre, which feeds racks, CPUs and the processing power the business depends on. No backup supply."
+  },
+  "top": "TOP",
+  "gates": {
+    "TOP": {
+      "name": "Loss of processing power",
+      "short": "Loss of processing power",
+      "type": "OR",
+      "inputs": [
+        "E_GRID",
+        "E_HW"
+      ],
+      "authored_by": "analyst"
+    }
+  },
+  "events": {
+    "E_GRID": {
+      "name": "Grid supply outage at site",
+      "short": "Grid outage",
+      "probability": 0.02,
+      "ledger_ref": "C-001",
+      "authored_by": "analyst"
+    },
+    "E_HW": {
+      "name": "Rack or CPU hardware fault taking the estate down",
+      "short": "Hardware fault",
+      "probability": 0.0003,
+      "ledger_ref": "C-002",
+      "authored_by": "analyst"
+    }
+  }
+}

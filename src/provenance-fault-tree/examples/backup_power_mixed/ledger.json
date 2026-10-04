@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "corpus": "none - illustrative example with fictional sources",
+    "scope": "Demonstration of evidence inheritance",
+    "audited_by": "ProvenanceFaultTree example",
+    "date": "2026-09-23"
+  },
+  "claims": [
+    {
+      "id": "C-001",
+      "claim": "Probability of a grid supply outage at the site during the period of interest is 0.02",
+      "claim_type": "quantitative",
+      "excerpt": "Site outage log records 2 supply interruptions in 100 site-periods.",
+      "provenance": {
+        "origin": "site outage log 2023-2025 (FICTIONAL source, illustrative)",
+        "generation_method": "measured",
+        "classification": "replication",
+        "independent_origins": 2
+      },
+      "evidence_class": "demonstrated",
+      "status": "verified"
+    },
+    {
+      "id": "C-002",
+      "claim": "Standby generator fails to start on demand with probability 0.01",
+      "claim_type": "quantitative",
+      "excerpt": "Vendor reliability model gives a start-failure rate of 1 in 100 demands.",
+      "provenance": {
+        "origin": "manufacturer reliability model (FICTIONAL source, illustrative)",
+        "generation_method": "modelled",
+        "classification": "benign",
+        "independent_origins": 1
+      },
+      "evidence_class": "modelled",
+      "status": "open"
+    },
+    {
+      "id": "C-003",
+      "claim": "Fuel supply to the generator is unavailable with probability 0.005",
+      "claim_type": "quantitative",
+      "excerpt": "No source consulted; value chosen by the analyst to complete the model.",
+      "provenance": {
+        "origin": "analyst's own assumption (this example)",
+        "generation_method": "asserted",
+        "classification": "unresolved",
+        "independent_origins": 0
+      },
+      "evidence_class": "asserted",
+      "status": "open"
+    },
+    {
+      "id": "C-004",
+      "claim": "UPS fails to bridge to the generator with probability 0.004",
+      "claim_type": "quantitative",
+      "excerpt": "Quarterly UPS transfer tests record 4 failures in 1000 transfers.",
+      "provenance": {
+        "origin": "site UPS test records (FICTIONAL source, illustrative)",
+        "generation_method": "measured",
+        "classification": "replication",
+        "independent_origins": 2
+      },
+      "evidence_class": "demonstrated",
+      "status": "verified"
+    }
+  ]
+}

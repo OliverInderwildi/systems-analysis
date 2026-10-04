@@ -1,0 +1,32 @@
+# Zenodo: the DOI of the systems-analysis collection goes here as  doi: 10.5281/zenodo.NNNNNNN
+cff-version: 1.2.0
+title: "ProvenanceACH: analysis of competing hypotheses with an evidence ledger"
+message: "Please cite both this software and Heuer's method."
+type: software
+version: 0.1.0
+authors:
+  - family-names: Inderwildi
+    given-names: Oliver
+license: MIT
+repository-code: "https://github.com/oliverinderwildi/systems-analysis/tree/main/src/provenance-ach"
+abstract: >-
+  An implementation of Heuer's Analysis of Competing Hypotheses in which no item of evidence
+  may enter the matrix without a provenance record, the conclusion inherits the weakest
+  evidence class among the discriminating items, and the authorship of each hypothesis and
+  item of evidence - source, analyst or language model - is recorded and reported.
+keywords:
+  - analysis of competing hypotheses
+  - intelligence analysis
+  - evidence ledger
+  - provenance
+  - systems analysis
+references:
+  - type: book
+    title: "Psychology of Intelligence Analysis"
+    authors:
+      - family-names: Heuer
+        given-names: "Richards J."
+        name-suffix: Jr.
+    publisher:
+      name: "Center for the Study of Intelligence, Central Intelligence Agency"
+    year: 1999

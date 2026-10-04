@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "question": "Why did metered peak demand at the site fall 12% year on year?",
+    "note": "ILLUSTRATIVE. Sources named in the ledger are fictional and marked as such."
+  },
+  "hypotheses": {
+    "H1": {
+      "text": "Efficiency upgrades reduced actual consumption",
+      "authored_by": "analyst"
+    },
+    "H2": {
+      "text": "Workload was moved to another site",
+      "authored_by": "analyst"
+    },
+    "H3": {
+      "text": "A metering change altered what is recorded",
+      "authored_by": "model"
+    }
+  },
+  "evidence": {
+    "E1": {
+      "text": "Cooling plant retrofit completed in March",
+      "ledger_ref": "C-001",
+      "authored_by": "source"
+    },
+    "E2": {
+      "text": "Rack-level power draw unchanged over the year",
+      "ledger_ref": "C-002",
+      "authored_by": "source"
+    },
+    "E3": {
+      "text": "Sister site reports a 9% increase in load",
+      "ledger_ref": "C-003",
+      "authored_by": "source"
+    },
+    "E4": {
+      "text": "Meter firmware updated in February",
+      "ledger_ref": "C-004",
+      "authored_by": "model"
+    },
+    "E5": {
+      "text": "Site remains operational throughout",
+      "ledger_ref": "C-005",
+      "authored_by": "source"
+    }
+  },
+  "ratings": {
+    "E1": {
+      "H1": "CC",
+      "H2": "N",
+      "H3": "N"
+    },
+    "E2": {
+      "H1": "II",
+      "H2": "C",
+      "H3": "C"
+    },
+    "E3": {
+      "H1": "I",
+      "H2": "CC",
+      "H3": "N"
+    },
+    "E4": {
+      "H1": "N",
+      "H2": "N",
+      "H3": "CC"
+    },
+    "E5": {
+      "H1": "C",
+      "H2": "C",
+      "H3": "C"
+    }
+  }
+}

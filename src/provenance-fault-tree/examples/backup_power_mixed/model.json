@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "title": "Loss of IT load at a data centre with backup power",
+    "note": "ILLUSTRATIVE. Same structure as backup_power, but the ledger gives the four inputs different evidence classes, so the inheritance rule is visible. The sources named in the ledger are fictional and marked as such."
+  },
+  "top": "TOP",
+  "gates": {
+    "TOP": {
+      "name": "Loss of IT load",
+      "type": "AND",
+      "inputs": [
+        "E_GRID",
+        "G_BACKUP"
+      ],
+      "authored_by": "analyst",
+      "short": "Loss of IT load"
+    },
+    "G_BACKUP": {
+      "name": "Backup power unavailable",
+      "type": "OR",
+      "inputs": [
+        "E_GEN",
+        "E_FUEL",
+        "E_UPS"
+      ],
+      "authored_by": "analyst",
+      "short": "Backup power unavailable"
+    }
+  },
+  "events": {
+    "E_GRID": {
+      "name": "Grid supply outage at site",
+      "probability": 0.02,
+      "ledger_ref": "C-001",
+      "authored_by": "analyst",
+      "short": "Grid outage"
+    },
+    "E_GEN": {
+      "name": "Standby generator fails to start on demand",
+      "probability": 0.01,
+      "ledger_ref": "C-002",
+      "authored_by": "analyst",
+      "short": "Generator fails to start"
+    },
+    "E_FUEL": {
+      "name": "Fuel supply to generator unavailable",
+      "probability": 0.005,
+      "ledger_ref": "C-003",
+      "authored_by": "model",
+      "short": "Fuel supply fails"
+    },
+    "E_UPS": {
+      "name": "UPS fails to bridge to generator",
+      "probability": 0.004,
+      "ledger_ref": "C-004",
+      "authored_by": "analyst",
+      "short": "UPS fails to bridge"
+    }
+  }
+}

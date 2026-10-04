@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#002147">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#002147"/><g fill="none" stroke="#FAFAF8" stroke-width="10"><rect x="520" y="230" width="160" height="80" rx="6" fill="#D6E9FF" stroke="none"/><path d="M600 310 L470 470 M600 310 L730 470"/></g><rect x="390" y="470" width="160" height="80" rx="40" fill="#FAFAF8"/><rect x="650" y="470" width="160" height="80" rx="40" fill="#FAFAF8"/><rect x="560" y="330" width="80" height="12" fill="#FF9A2B"/></svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/heritage/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/heritage/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/heritage/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/heritage/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/heritage/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/heritage/styles.css">
+  <script src="_ds/heritage/_ds_bundle.js"></script>
+  <script src="cutsets-data.js"></script>
+  <style>
+    body { margin: 0; background: var(--surface-page); }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+    a { color: var(--text-link); } a:hover { color: var(--text-link-hover); }
+  </style>
+</helmet>
+<div ref="{{ outerRef }}" style="width: 100%; height: {{ outerH }}px; overflow: hidden;">
+<div data-screen-label="Fault tree cut sets" style="transform: scale({{ scale }}); transform-origin: 0 0; width: 1440px; height: 900px; box-sizing: border-box; padding: 30px 48px 22px; background: var(--surface-page); font-family: var(--font-body, 'Helvetica Neue', Helvetica, Arial, sans-serif); color: var(--text-body); display: flex; flex-direction: column; gap: 20px;">
+
+  <header style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px;">
+    <div style="display: flex; flex-direction: column; gap: 10px; max-width: 1000px;">
+      <div style="display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--leather-brown);">
+        <span>Reliability method</span>
+        <span style="width: 24px; height: 2px; background: var(--orange);"></span>
+        <span>Cut sets</span>
+      </div>
+      <h1 style="margin: 0; font-size: 34px; line-height: 1.12; font-weight: 500; letter-spacing: -0.015em; color: var(--oxford-blue);">Reverse-engineering failure: fault tree analysis in four steps</h1>
+      <p style="margin: 0; font-size: 17px; line-height: 1.5; font-weight: 300; color: var(--text-muted); text-wrap: pretty;">Which combinations of basic failures are, on their own, enough to cause the failure we want to prevent? Those combinations are called cut sets.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px; visibility: {{ ctrlVis }};">
+      <div style="display: flex; padding: 3px; gap: 2px; background: var(--surface-sunken); border: 1px solid var(--border-default); border-radius: 6px;">
+        <button onClick="{{ goBefore }}" style="border: 0; cursor: pointer; padding: 7px 14px; border-radius: 4px; font: inherit; font-size: 13px; font-weight: 500; background: {{ segBeforeBg }}; color: {{ segBeforeFg }}; box-shadow: {{ segBeforeShadow }};">Original system</button>
+        <button onClick="{{ goAfter }}" style="border: 0; cursor: pointer; padding: 7px 14px; border-radius: 4px; font: inherit; font-size: 13px; font-weight: 500; background: {{ segAfterBg }}; color: {{ segAfterFg }}; box-shadow: {{ segAfterShadow }};">After the fix</button>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <x-import component-from-global-scope="HeritageDesignSystem_ffe1f3.Button" variant="secondary" size="sm" onClick="{{ prev }}" hint-size="70px,32px">Back</x-import>
+        <sc-if value="{{ playing }}" hint-placeholder-val="{{ true }}"><x-import component-from-global-scope="HeritageDesignSystem_ffe1f3.Button" variant="ghost" size="sm" onClick="{{ togglePlay }}" hint-size="70px,32px">Pause</x-import></sc-if>
+        <sc-if value="{{ paused }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="HeritageDesignSystem_ffe1f3.Button" variant="ghost" size="sm" onClick="{{ togglePlay }}" hint-size="70px,32px">Play</x-import></sc-if>
+        <x-import component-from-global-scope="HeritageDesignSystem_ffe1f3.Button" variant="primary" size="sm" onClick="{{ next }}" hint-size="70px,32px">Next</x-import>
+        <span style="font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 12px; color: var(--text-subtle); min-width: 40px; text-align: right;">{{ frameLabel }}</span>
+      </div>
+    </div>
+  </header>
+
+  <nav style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
+    <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+      <div style="display: flex; align-items: baseline; gap: 14px; padding: 16px 20px 14px; border-bottom: 2px solid {{ s.bar }}; margin-bottom: -1px; background: {{ s.bg }}; transition: border-color 280ms cubic-bezier(0.2,0,0,1), background 280ms cubic-bezier(0.2,0,0,1);">
+        <span style="font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 13px; font-weight: 500; color: {{ s.numColor }};">0{{ s.n }}</span>
+        <span style="font-size: 16px; font-weight: 500; color: {{ s.color }};">{{ s.label }}</span>
+      </div>
+    </sc-for>
+  </nav>
+
+  <main style="position: relative; flex: 1; min-height: 0; display: grid; grid-template-columns: 280px 72px minmax(0, 1fr) 72px 380px; gap: 0;">
+
+    <section style="position: relative; z-index: 1; display: flex; flex-direction: column; gap: 16px;">
+      <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-subtle);">{{ systemHeading }}</div>
+      <div style="display: grid; grid-template-columns: 84px 170px; column-gap: 12px; align-items: start;">
+        <div style="grid-column: 1; grid-row: 1; height: 100%; position: relative;">
+          <div style="opacity: {{ genOp }}; transition: opacity 500ms cubic-bezier(0.2,0,0,1);">
+            <div data-link="sys-gen" style="position: absolute; top: 34px; left: 0; width: 84px; box-sizing: border-box; padding: 10px 8px; background: var(--surface-tint-warm); border: 1px solid var(--leather-brown); border-radius: 6px; font-size: 12px; line-height: 1.35; font-weight: 500; color: #5E4430; text-align: center;">Standby generator + fuel + UPS</div>
+            <div style="position: absolute; top: 78px; left: 84px; width: 12px; height: 1px; background: var(--leather-brown);"></div>
+          </div>
+        </div>
+        <div style="grid-column: 2; grid-row: 1; display: flex; flex-direction: column; align-items: stretch;">
+          <sc-for list="{{ systemChain }}" as="c" hint-placeholder-count="5">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <div data-link="sys-{{ c.id }}" style="width: 100%; box-sizing: border-box; padding: 11px 12px; text-align: center; font-size: 14px; font-weight: 500; border-radius: 6px; background: {{ c.bg }}; border: 1px solid {{ c.border }}; color: {{ c.color }}; box-shadow: var(--shadow-xs);">{{ c.name }}</div>
+              <div style="width: 1px; height: {{ c.gap }}px; background: var(--border-strong);"></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <p style="opacity: {{ fadeOp }}; transition: opacity 220ms cubic-bezier(0.2,0,0,1); margin: 4px 0 0; font-size: 14px; line-height: 1.55; font-weight: 300; color: var(--text-muted); text-wrap: pretty;">{{ systemNote }}</p>
+    </section>
+
+
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 200px; gap: 10px;">
+      <div style="width: 36px; height: 36px; box-sizing: border-box; border-radius: 18px; display: flex; align-items: center; justify-content: center; background: #fff; border: {{ p1.border }}; color: {{ p1.color }}; box-shadow: var(--shadow-xs); transition: border-color 280ms cubic-bezier(0.2,0,0,1), color 280ms cubic-bezier(0.2,0,0,1);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+      </div>
+      <span style="font-size: 11px; line-height: 1.3; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; color: {{ p1.color }}; transition: color 280ms cubic-bezier(0.2,0,0,1);">modelled as</span>
+    </div>
+    <section data-link="tree-col" style="position: relative; z-index: 1; display: flex; flex-direction: column; gap: 16px; padding: 0;">
+      <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-subtle);">{{ treeHeading }}</div>
+      <div style="position: relative; width: 540px; height: 410px; margin: 0 auto;">
+        <sc-for list="{{ edges }}" as="e" hint-placeholder-count="2">
+          <div style="position: absolute; left: {{ e.x }}px; top: {{ e.y }}px; width: {{ e.len }}px; height: 1.25px; background: var(--border-strong); transform-origin: 0 50%; transform: rotate({{ e.deg }}deg); opacity: {{ e.op }}; transition: left 600ms cubic-bezier(0.2,0,0,1), top 600ms cubic-bezier(0.2,0,0,1), width 600ms cubic-bezier(0.2,0,0,1), transform 600ms cubic-bezier(0.2,0,0,1), opacity 400ms cubic-bezier(0.2,0,0,1);"></div>
+        </sc-for>
+        <sc-for list="{{ nodes }}" as="nd" hint-placeholder-count="3">
+          <div style="position: absolute; left: {{ nd.x }}px; top: {{ nd.y }}px; width: 124px; opacity: {{ nd.op }}; transform: scale({{ nd.scale }}); display: flex; flex-direction: column; align-items: center; transition: left 600ms cubic-bezier(0.2,0,0,1), top 600ms cubic-bezier(0.2,0,0,1), opacity 400ms cubic-bezier(0.2,0,0,1), transform 400ms cubic-bezier(0.2,0,0,1);">
+            <div data-link="t-{{ nd.id }}" data-vis="{{ nd.op }}" style="width: 124px; height: 54px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; padding: 0 8px; text-align: center; font-size: 12.5px; line-height: 1.25; font-weight: 500; border-radius: {{ nd.radius }}; background: {{ nd.bg }}; border: {{ nd.border }}; color: {{ nd.color }}; box-shadow: {{ nd.shadow }}; transition: border-color 280ms cubic-bezier(0.2,0,0,1), box-shadow 280ms cubic-bezier(0.2,0,0,1);">{{ nd.label }}</div>
+            <div style="opacity: {{ nd.chipOp }}; display: flex; flex-direction: column; align-items: center;">
+              <div style="width: 1.25px; height: 8px; background: var(--border-strong);"></div>
+              <div style="width: 40px; box-sizing: border-box; padding: 3px 0; text-align: center; border-radius: 2px; background: var(--oxford-blue); color: #fff; font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 11px; font-weight: 500; letter-spacing: 0.04em;">{{ nd.gate }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 200px; gap: 10px;">
+      <div style="width: 36px; height: 36px; box-sizing: border-box; border-radius: 18px; display: flex; align-items: center; justify-content: center; background: #fff; border: {{ p2.border }}; color: {{ p2.color }}; box-shadow: var(--shadow-xs); transition: border-color 280ms cubic-bezier(0.2,0,0,1), color 280ms cubic-bezier(0.2,0,0,1);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+      </div>
+      <span style="font-size: 11px; line-height: 1.3; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; color: {{ p2.color }}; transition: color 280ms cubic-bezier(0.2,0,0,1);">worked into</span>
+    </div>
+    <section style="position: relative; z-index: 1; display: flex; flex-direction: column; gap: 16px; opacity: {{ fadeOp }}; transform: translateY({{ fadeY }}px); transition: opacity 220ms cubic-bezier(0.2,0,0,1), transform 280ms cubic-bezier(0.2,0,0,1);">
+      <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-subtle);">The working set</div>
+      <p style="margin: 0; font-size: 18px; line-height: 1.4; font-weight: 500; color: var(--oxford-blue); text-wrap: pretty;">{{ ws.text }}</p>
+      <sc-if value="{{ ws.formula }}" hint-placeholder-val="{{ false }}">
+        <div data-link="ws-formula" style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; background: var(--surface-sunken); border-radius: 4px;">
+          <span style="font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 13px; color: var(--steel-navy);">{{ ws.formula }}</span>
+          <sc-if value="{{ ws.replacing }}" hint-placeholder-val="{{ false }}">
+            <span style="font-size: 13px; font-weight: 500; color: var(--warning);">Replacing: {{ ws.replacing }}</span>
+          </sc-if>
+        </div>
+      </sc-if>
+      <sc-if value="{{ ws.note }}" hint-placeholder-val="{{ false }}">
+        <span style="font-size: 14px; font-weight: 500; color: var(--racing-green);">{{ ws.note }}</span>
+      </sc-if>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <sc-for list="{{ rows }}" as="r" hint-placeholder-count="2">
+          <div data-link="ws-row-{{ $index }}" style="opacity: {{ r.op }}; display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 6px; background: {{ r.bg }}; border: 1px solid {{ r.border }}; box-shadow: var(--shadow-xs);">
+            <span style="font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 11px; color: var(--text-subtle); width: 18px;">{{ r.idx }}</span>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px; flex: 1;">
+              <sc-for list="{{ r.items }}" as="it" hint-placeholder-count="1">
+                <sc-if value="{{ it.plus }}" hint-placeholder-val="{{ false }}">
+                  <span style="font-family: var(--font-mono, ui-monospace, Menlo, monospace); font-size: 13px; color: var(--text-subtle);">·</span>
+                </sc-if>
+                <span style="font-size: 14px; font-weight: 500; color: var(--oxford-blue); text-decoration: {{ r.deco }};">{{ it.name }}</span>
+              </sc-for>
+            </div>
+            <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: {{ r.tagColor }};">{{ r.tag }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ ws.implication }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top: auto; padding: 16px 18px; background: var(--oxford-blue); color: #fff; border-radius: 10px; font-size: 14px; line-height: 1.55; font-weight: 300; text-wrap: pretty;">{{ ws.implication }}</div>
+      </sc-if>
+    </section>
+  </main>
+
+  <div style="position: relative; height: 46px; flex: none;">
+    <div style="position: absolute; left: 140px; right: 190px; top: 0; height: 22px; box-sizing: border-box; border: 1.5px solid {{ fb.line }}; border-top: 0; border-radius: 0 0 6px 6px; transition: border-color 280ms cubic-bezier(0.2,0,0,1);"></div>
+    <div style="position: absolute; left: 134px; top: -8px; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 9px solid {{ fb.line }}; transition: border-color 280ms cubic-bezier(0.2,0,0,1);"></div>
+    <div style="position: absolute; right: 186px; top: -4px; width: 9px; height: 9px; border-radius: 5px; background: {{ fb.line }}; transition: background 280ms cubic-bezier(0.2,0,0,1);"></div>
+    <div style="position: absolute; left: 0; right: 0; top: 10px; display: flex; justify-content: center;">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 4px 16px; background: var(--surface-page); opacity: {{ fadeOp }}; transition: opacity 220ms cubic-bezier(0.2,0,0,1);">
+        <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: {{ fb.tag }};">Feedback to the design</span>
+        <span style="font-size: 14px; font-weight: 300; color: var(--text-body);">{{ fb.text }}</span>
+      </div>
+    </div>
+  </div>
+
+  <footer style="display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid var(--border-subtle); font-size: 12px; font-weight: 300; color: var(--text-subtle);">
+    <span>Method: Vesely, Goldberg, Roberts &amp; Haasl, Fault Tree Handbook (NUREG-0492, 1981), ch. VII</span>
+    <span style="display: flex; align-items: center; gap: 20px;">
+      <span><span style="font-weight: 500; color: var(--oxford-blue);">AND</span> = every input needed. <span style="font-weight: 500; color: var(--oxford-blue);">OR</span> = any input enough.</span>
+      <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 14px; height: 14px; border-radius: 3px; background: var(--light-blue); border: 1px solid var(--info-border);"></span>still contains a gate</span>
+      <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 14px; height: 14px; border-radius: 3px; background: #fff; border: 1px solid var(--racing-green);"></span>a finished cut set</span>
+    </span>
+  </footer>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;autoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;interval&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:3,&quot;min&quot;:1.5,&quot;max&quot;:10,&quot;step&quot;:0.5,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;}}">
+const W = 124, H = 54, CHIP = 28, CW = 1440, CH = 900, YS = 0.88;
+const data = () => window.CUTSETS;
+const reduced = () => { try { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } };
+
+class Component extends DCLogic {
+  state = { f: 0, playing: !reduced(), scale: 1 };
+  outerRef = React.createRef();
+  componentDidMount() {
+    this.tick();
+    if (!data()) this.wait = setInterval(() => { if (data()) { clearInterval(this.wait); this.forceUpdate(); } }, 50);
+    const fit = () => { const el = this.outerRef.current; if (el) this.setState({ scale: Math.min(1, el.clientWidth / CW, this.state.capture ? window.innerHeight / CH : 1) || 1 }); };
+    window.__ftcsCapture = on => this.setState({ capture: on, playing: false, f: 0, fade: false }, fit);
+    if (window.ResizeObserver) { this.ro = new ResizeObserver(fit); this.outerRef.current && this.ro.observe(this.outerRef.current); }
+    fit();
+    this.onKey = e => { if (e.code === 'Space' && e.target === document.body) { e.preventDefault(); this.setState(s => ({ playing: !s.playing })); } };
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentDidUpdate(pp) { if (pp.interval !== this.props.interval) this.tick(); }
+  componentWillUnmount() { clearInterval(this.t); clearInterval(this.wait); clearTimeout(this.ft); this.ro && this.ro.disconnect(); window.removeEventListener('keydown', this.onKey); }
+  tick() {
+    clearInterval(this.t);
+    const ms = (this.props.interval ?? 3) * 1000;
+    this.t = setInterval(() => { if (this.state.playing && (this.props.autoplay ?? true)) this.go(this.state.f + 1); }, ms);
+  }
+  go(f) {
+    const D = data(); if (!D) return;
+    f = (f + D.frames.length) % D.frames.length;
+    clearTimeout(this.ft);
+    this.setState({ fade: true });
+    this.ft = setTimeout(() => this.setState({ f, fade: false }), 220);
+  }
+  renderVals() {
+    const D = data();
+    const base = { outerRef: this.outerRef, scale: this.state.scale, outerH: Math.round(CH * this.state.scale) };
+    if (!D) return base;
+    const { labels: LABELS, gates: GATES, order: ORDER, allEdges: ALL_EDGES, steps: STEPS } = D;
+    const FRAMES = D.frames;
+    const fr = Object.assign({}, FRAMES[Math.min(this.state.f, FRAMES.length - 1)]);
+    const tree = D.trees[fr.tree];
+    fr.after = fr.sys;
+    const P = tree.pos, on = new Set(tree.show);
+    const onE = new Set(tree.edges.map(e => e.join('>')));
+    const edges = ALL_EDGES.map(([a, b]) => {
+      const px = P[a][0], py = P[a][1] * YS, cx = P[b][0], cy = P[b][1] * YS;
+      const x = px + W / 2, y = py + H + CHIP, dx = cx + W / 2 - x, dy = cy - y;
+      return { x, y, len: Math.hypot(dx, dy), deg: Math.atan2(dy, dx) * 180 / Math.PI, op: onE.has(a + '>' + b) ? 1 : 0 };
+    });
+    const nodes = ORDER.map(id => {
+      const hl = fr.hl === id, vis = on.has(id), gate = GATES[id] || '';
+      return {
+        id, label: LABELS[id], gate, x: P[id][0], y: P[id][1] * YS,
+        op: vis ? 1 : 0, scale: vis ? 1 : 0.94, chipOp: gate && !tree.noChips ? 1 : 0,
+        radius: gate ? '4px' : '27px',
+        bg: gate ? 'var(--light-blue)' : '#fff',
+        border: hl ? '2px solid var(--orange)' : gate ? '1px solid var(--oxford-blue)' : '1px solid var(--border-strong)',
+        color: gate ? 'var(--oxford-blue)' : 'var(--text-body)',
+        shadow: hl ? '0 0 0 4px rgba(255,154,43,0.22)' : 'var(--shadow-xs)',
+      };
+    });
+    const chain = ['Grid supply', 'Data centre', 'Racks', 'CPUs', 'Processing power'].map((name, i, a) => {
+      const last = i === a.length - 1;
+      return { name, id: name.split(' ')[0].toLowerCase(), gap: last ? 0 : 16, bg: last ? 'var(--oxford-blue)' : '#fff', border: last ? 'var(--oxford-blue)' : 'var(--border-default)', color: last ? '#fff' : 'var(--text-body)' };
+    });
+    const RS = {
+      gate: { bg: 'var(--light-blue)', border: 'var(--info-border)', tag: 'Gate', tagColor: 'var(--steel-navy)' },
+      done: { bg: '#fff', border: 'var(--racing-green)', tag: 'Cut set', tagColor: 'var(--racing-green)' },
+      mark: { bg: 'var(--warning-bg)', border: 'var(--orange)', tag: 'Replacing', tagColor: 'var(--warning)' },
+      strike: { bg: 'var(--surface-sunken)', border: 'var(--orange)', tag: 'Not minimal', tagColor: 'var(--warning)', deco: 'line-through', op: 0.7 },
+    };
+    const rows = fr.rows.map((r, i) => {
+      const st = RS[r.state] || RS.gate;
+      return { idx: String(i + 1).padStart(2, '0'), items: r.items.map((name, j) => ({ name, plus: j > 0 })), bg: st.bg, border: st.border, tag: r.tag || st.tag, tagColor: st.tagColor, deco: st.deco || 'none', op: st.op || 1 };
+    });
+    const ptr = on => on ? { border: '2px solid var(--orange)', color: 'var(--oxford-blue)' } : { border: '1px solid var(--border-default)', color: 'var(--grey-medium)' };
+    const seg = on => on ? ['#fff', 'var(--oxford-blue)', 'var(--shadow-xs)'] : ['transparent', 'var(--text-muted)', 'none'];
+    const [bb, bf, bs] = seg(!fr.after), [ab, af, as] = seg(fr.after);
+    return {
+      ...base, ctrlVis: this.state.capture ? 'hidden' : 'visible',
+      p1: ptr(fr.step <= 2), p2: ptr(fr.step === 3),
+      fb: fr.fb === 'found'
+        ? { line: 'var(--orange)', tag: 'var(--warning)', text: 'Grid outage stands alone: a single point of failure. Add a standby supply and redraw the tree.' }
+        : fr.fb === 'next'
+          ? { line: 'var(--orange)', tag: 'var(--warning)', text: 'Grid now needs a second failure. Hardware fault still stands alone: the next design change.' }
+          : fr.after
+            ? { line: fr.fb === 'changed' ? 'var(--orange)' : 'var(--leather-brown)', tag: 'var(--leather-brown)', text: 'Standby generator, fuel and UPS added to the system. The tree gains a branch.' }
+            : { line: 'var(--border-strong)', tag: 'var(--text-subtle)', text: 'Minimal cut sets show where the design needs to change.' },
+      playing: this.state.playing, paused: !this.state.playing,
+      after: fr.after, genOp: fr.after ? 1 : 0,
+      fadeOp: this.state.fade ? 0 : 1, fadeY: this.state.fade ? 6 : 0,
+      steps: STEPS.map((label, i) => {
+        const on = i + 1 === fr.step;
+        return { n: i + 1, label, bar: on ? 'var(--orange)' : 'transparent', bg: on ? '#fff' : 'transparent', color: on ? 'var(--oxford-blue)' : 'var(--text-subtle)', numColor: on ? 'var(--orange)' : 'var(--grey-medium)' };
+      }),
+      systemHeading: fr.after ? 'The system, after the fix' : 'The system',
+      treeHeading: fr.after ? 'The fault tree, after the fix' : 'The fault tree',
+      systemNote: fr.after
+        ? 'Added because the analysis found the grid to be a single point of failure. UPS = uninterruptible power supply: batteries that carry the load until the generator takes over.'
+        : 'Processing power is the service the business runs on. It must not be unavailable - so the question is what could take it away.',
+      systemChain: chain, nodes, edges, rows,
+      ws: { text: fr.text, formula: fr.formula || '', replacing: fr.replacing || '', note: fr.note || '', implication: fr.implication || '' },
+      frameLabel: `${this.state.f + 1} / ${FRAMES.length}`,
+      playLabel: this.state.playing ? 'Pause' : 'Play',
+      prev: () => this.go(this.state.f - 1),
+      next: () => this.go(this.state.f + 1),
+      togglePlay: () => this.setState(s => ({ playing: !s.playing })),
+      goBefore: () => this.go(0), goAfter: () => this.go(Math.max(0, FRAMES.findIndex(x => x.sys))),
+      segBeforeBg: bb, segBeforeFg: bf, segBeforeShadow: bs,
+      segAfterBg: ab, segAfterFg: af, segAfterShadow: as,
+    };
+  }
+}
+</script>
+</body>
+</html>

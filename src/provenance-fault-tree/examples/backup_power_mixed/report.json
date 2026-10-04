@@ -1,0 +1,96 @@
+{
+  "cut_sets": [
+    {
+      "cut_set": [
+        "E_GEN",
+        "E_GRID"
+      ],
+      "probability": 0.0002,
+      "evidence_class": "modelled",
+      "weakest_input": "E_GRID"
+    },
+    {
+      "cut_set": [
+        "E_FUEL",
+        "E_GRID"
+      ],
+      "probability": 0.0001,
+      "evidence_class": "asserted",
+      "weakest_input": "E_GRID"
+    },
+    {
+      "cut_set": [
+        "E_GRID",
+        "E_UPS"
+      ],
+      "probability": 8e-05,
+      "evidence_class": "demonstrated",
+      "weakest_input": "E_GRID"
+    }
+  ],
+  "probability_mass_by_evidence_class": {
+    "asserted": 0.0001,
+    "modelled": 0.0002,
+    "demonstrated": 8e-05,
+    "established": 0.0
+  },
+  "share_by_evidence_class": {
+    "asserted": 0.2631578947368421,
+    "modelled": 0.5263157894736842,
+    "demonstrated": 0.2105263157894737,
+    "established": 0.0
+  },
+  "weakest_class_carrying_mass": "asserted",
+  "importance": [
+    {
+      "event": "E_GRID",
+      "fussell_vesely": 1.0,
+      "evidence_class": "demonstrated",
+      "generation_method": "measured",
+      "origin": "site outage log 2023-2025 (FICTIONAL source, illustrative)",
+      "authored_by": "analyst"
+    },
+    {
+      "event": "E_GEN",
+      "fussell_vesely": 0.5263157894736842,
+      "evidence_class": "modelled",
+      "generation_method": "modelled",
+      "origin": "manufacturer reliability model (FICTIONAL source, illustrative)",
+      "authored_by": "analyst"
+    },
+    {
+      "event": "E_FUEL",
+      "fussell_vesely": 0.2631578947368421,
+      "evidence_class": "asserted",
+      "generation_method": "asserted",
+      "origin": "analyst's own assumption (this example)",
+      "authored_by": "model"
+    },
+    {
+      "event": "E_UPS",
+      "fussell_vesely": 0.2105263157894737,
+      "evidence_class": "demonstrated",
+      "generation_method": "measured",
+      "origin": "site UPS test records (FICTIONAL source, illustrative)",
+      "authored_by": "analyst"
+    }
+  ],
+  "absence_census": [
+    {
+      "event": "E_GEN",
+      "ledger_ref": "C-002",
+      "missing": "single origin (no independent confirmation)"
+    },
+    {
+      "event": "E_FUEL",
+      "ledger_ref": "C-003",
+      "missing": "number is asserted, not derived from data, single origin (no independent confirmation)"
+    }
+  ],
+  "structure_authorship": {
+    "analyst": 5,
+    "model": 1
+  },
+  "warning": null,
+  "top_probability": 0.000377804
+}

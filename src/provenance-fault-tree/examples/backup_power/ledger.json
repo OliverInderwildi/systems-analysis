@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "corpus": "none - illustrative example",
+    "scope": "Demonstration of the provenance layer, not a real reliability study",
+    "audited_by": "ProvenanceFaultTree example",
+    "date": "2026-09-22"
+  },
+  "claims": [
+    {
+      "id": "C-001",
+      "claim": "Probability of a grid supply outage at the site during the period of interest is 0.02",
+      "claim_type": "quantitative",
+      "excerpt": "Illustrative value chosen for this example; no source consulted.",
+      "provenance": {
+        "origin": "analyst's own assumption (this example)",
+        "generation_method": "asserted",
+        "classification": "unresolved",
+        "independent_origins": 0
+      },
+      "evidence_class": "asserted",
+      "status": "open"
+    },
+    {
+      "id": "C-002",
+      "claim": "Standby generator fails to start on demand with probability 0.01",
+      "claim_type": "quantitative",
+      "excerpt": "Illustrative value chosen for this example; no source consulted.",
+      "provenance": {
+        "origin": "analyst's own assumption (this example)",
+        "generation_method": "asserted",
+        "classification": "unresolved",
+        "independent_origins": 0
+      },
+      "evidence_class": "asserted",
+      "status": "open"
+    },
+    {
+      "id": "C-003",
+      "claim": "Fuel supply to the generator is unavailable with probability 0.005",
+      "claim_type": "quantitative",
+      "excerpt": "Illustrative value chosen for this example; no source consulted.",
+      "provenance": {
+        "origin": "analyst's own assumption (this example)",
+        "generation_method": "asserted",
+        "classification": "unresolved",
+        "independent_origins": 0
+      },
+      "evidence_class": "asserted",
+      "status": "open"
+    },
+    {
+      "id": "C-004",
+      "claim": "UPS fails to bridge to the generator with probability 0.004",
+      "claim_type": "quantitative",
+      "excerpt": "Illustrative value chosen for this example; no source consulted.",
+      "provenance": {
+        "origin": "analyst's own assumption (this example)",
+        "generation_method": "asserted",
+        "classification": "unresolved",
+        "independent_origins": 0
+      },
+      "evidence_class": "asserted",
+      "status": "open"
+    }
+  ]
+}
