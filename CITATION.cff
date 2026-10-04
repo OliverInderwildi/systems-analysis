@@ -7,6 +7,7 @@ doi: 10.5281/zenodo.23139763
 authors:
   - family-names: Inderwildi
     given-names: Oliver
+    orcid: "https://orcid.org/0000-0002-4315-7839"
 license: MIT
 repository-code: "https://github.com/oliverinderwildi/systems-analysis"
 url: "https://oliverinderwildi.github.io/code/"
@@ -19,3 +20,15 @@ keywords:
   - analysis of competing hypotheses
   - provenance
   - evidence ledger
+references:
+  - type: book
+    title: "Powering the Digital Transformation: Why the Energy Is Well Spent"
+    authors:
+      - family-names: Inderwildi
+        given-names: "Oliver Richard"
+        orcid: "https://orcid.org/0000-0002-4315-7839"
+    publisher:
+      name: "Springer Nature"
+    collection-title: "SpringerBriefs in Applied Sciences and Technology"
+    isbn: "978-3-032-37307-6"
+    year: 2026

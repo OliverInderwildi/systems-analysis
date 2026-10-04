@@ -7,6 +7,7 @@ doi: 10.5281/zenodo.23139763
 authors:
   - family-names: Inderwildi
     given-names: Oliver
+    orcid: "https://orcid.org/0000-0002-4315-7839"
 license: MIT
 repository-code: "https://github.com/oliverinderwildi/systems-analysis/tree/main/src/provenance-fault-tree"
 abstract: >-
