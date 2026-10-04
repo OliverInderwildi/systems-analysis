@@ -1,9 +1,9 @@
-# Zenodo: the DOI of the systems-analysis collection goes here as  doi: 10.5281/zenodo.NNNNNNN
 cff-version: 1.2.0
 title: "ProvenanceEventTree: event tree analysis with an evidence ledger"
 message: "Please cite the method as well as this tool."
 type: software
 version: 0.1.0
+doi: 10.5281/zenodo.23139763
 authors:
   - family-names: Inderwildi
     given-names: Oliver

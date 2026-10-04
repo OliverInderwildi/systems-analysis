@@ -1,9 +1,9 @@
-# Zenodo: the DOI of the systems-analysis collection goes here as  doi: 10.5281/zenodo.NNNNNNN
 cff-version: 1.2.0
 title: "csakernel: recording rules for auditable systems analysis"
 message: "If you use this software, please cite it, and the methods of the tools built on it."
 type: software
 version: 0.1.0
+doi: 10.5281/zenodo.23139763
 authors:
   - family-names: Inderwildi
     given-names: Oliver

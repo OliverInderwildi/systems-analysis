@@ -1,9 +1,9 @@
-# Zenodo: after the first GitHub release, add the concept DOI here as  doi: 10.5281/zenodo.NNNNNNN
 cff-version: 1.2.0
 title: "Systems analysis: open tools with an evidence ledger"
 message: "If you use this software, please cite it, and the method of the tool you used (see src/<tool>/CITATION.cff)."
 type: software
 version: 0.1.0
+doi: 10.5281/zenodo.23139763
 authors:
   - family-names: Inderwildi
     given-names: Oliver

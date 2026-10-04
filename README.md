@@ -1,5 +1,7 @@
 # Systems analysis
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23139763.svg)](https://doi.org/10.5281/zenodo.23139763)
+
 Open tools for systems analysis. Each is a faithful implementation of a published method, with credit to its
 authors, plus one thing the original does not have – most often a record of where every number came from.
 
@@ -24,6 +26,8 @@ Worked examples, figures and step-by-step animations are on the website: https:/
 The provenance tools import `csakernel` from its sibling folder, so keep `src/` together.
 
 ## How to cite
+
+Archived on Zenodo: https://doi.org/10.5281/zenodo.23139763
 
 Cite the collection with [`CITATION.cff`](CITATION.cff) (GitHub: "Cite this repository"), and the method of the tool you
 used – each `src/<tool>/CITATION.cff` lists its references.
